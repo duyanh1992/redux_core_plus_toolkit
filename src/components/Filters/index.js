@@ -1,6 +1,7 @@
 import { Col, Row, Input, Typography, Radio, Select, Tag, Form } from "antd";
 import { onFilterPriority, onFilterStatus, onSearchTodo } from "../Redux/actions";
 import { useDispatch } from "react-redux";
+import { filterSlice } from "./FilterSlice";
 
 const { Search } = Input;
 
@@ -10,14 +11,14 @@ export default function Filters({ form }) {
   const handleSeaching = () => {
     const formValues = form.getFieldsValue();
 
-    dispatch(onSearchTodo({ search: formValues?.filterSearch }));
+    dispatch(filterSlice.actions.search({ search: formValues?.filterSearch }));
   };
 
   const handleSelectStatus = () => {
     const formValues = form.getFieldsValue();
 
     if (formValues?.filterStatus) {
-      dispatch(onFilterStatus({ status: formValues?.filterStatus }));
+      dispatch(filterSlice.actions.filterStatus({ status: formValues?.filterStatus }));
     }
   };
 
@@ -25,7 +26,7 @@ export default function Filters({ form }) {
     const formValues = form.getFieldsValue();
 
     if (formValues?.filterPriority) {
-      dispatch(onFilterPriority({ priority: formValues?.filterPriority }));
+      dispatch(filterSlice.actions.priority({ priority: formValues?.filterPriority }));
     }
   }
 

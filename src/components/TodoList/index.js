@@ -4,6 +4,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { addTodo } from "../Redux/actions";
 import { v4 as uuidv4 } from "uuid";
 import { todoRemainingSelector } from "../Redux/selectors";
+import { todoSlice } from "../Todo/TodoSlice";
 
 export default function TodoList({ form }) {
   const dispatch = useDispatch();
@@ -18,7 +19,7 @@ export default function TodoList({ form }) {
 
     if (formValues?.todoName && formValues?.todoPriority) {
       dispatch(
-        addTodo({
+        todoSlice.actions.add({
           id: uuidv4(),
           content: formValues?.todoName,
           priority: formValues?.todoPriority,

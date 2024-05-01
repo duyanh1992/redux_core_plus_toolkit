@@ -1,32 +1,54 @@
-const initialState = {
-  search: "",
-  status: "All",
-  priority: [],
-};
+// const initialState = {
+//   search: "",
+//   status: "All",
+//   priority: [],
+// };
 
-const filterReducer = (state = initialState, action) => {
-  switch (action.type) {
-    case "filter/search":
-      return {
-        ...state,
-        search: action.payload.search,
-      };
+import { createSlice } from "@reduxjs/toolkit";
 
-    case "todo/filterStatus":
-      return {
-        ...state,
-        status: action.payload.status,
-      };
+// const filterReducer = (state = initialState, action) => {
+//   switch (action.type) {
+//     case "filter/search":
+//       return {
+//         ...state,
+//         search: action.payload.search,
+//       };
 
-    case "filter/priority":
-      return {
-        ...state,
-        priority: action.payload.priority,
-      };
+//     case "todo/filterStatus":
+//       return {
+//         ...state,
+//         status: action.payload.status,
+//       };
 
-    default:
-      return state;
-  }
-};
+//     case "filter/priority":
+//       return {
+//         ...state,
+//         priority: action.payload.priority,
+//       };
 
-export default filterReducer;
+//     default:
+//       return state;
+//   }
+// };
+
+// export default filterReducer;
+
+export const filterSlice = createSlice({
+  name: "filter",
+  initialState: {
+    search: "",
+    status: "All",
+    priority: [],
+  },
+  reducers: {
+    search: (state, action) => {
+      state.search = action.payload.search;
+    },
+    filterStatus: (state, action) => {
+      state.status = action.payload.status;
+    },
+    priority: (state, action) => {
+      state.priority = action.payload.priority
+    },
+  },
+});

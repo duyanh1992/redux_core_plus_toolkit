@@ -21,7 +21,7 @@ export const onFilterStatus = (payload) => {
 
 export const setTodoStatus = (payload) => {
   return {
-    type: "todo/setTodoStatus",
+    type: "filter/setTodoStatus",
     payload,
   };
 };

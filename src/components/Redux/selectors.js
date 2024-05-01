@@ -7,9 +7,10 @@ export const todoRemainingSelector = createSelector(
   getTodoList,
   getFilterObj,
   (todoList, filters) => {
-    if (filters?.search === "") return todoList;
     return todoList.filter((todo) => {
-      return todo.content.includes(filters?.search);
+      if (filters?.status === 'All') return todo.content.includes(filters?.search)
+
+      return todo.content.includes(filters?.search) && (filters?.status === 'Completed' ? todo.completed : !todo.completed);
     });
   }
 );

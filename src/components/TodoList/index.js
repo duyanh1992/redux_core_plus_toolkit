@@ -39,6 +39,7 @@ export default function TodoList({ form }) {
           name={todo?.content}
           prioriry={todo?.priority}
           id={todo?.id}
+          completed={todo.completed}
         />
       );
     });

@@ -1,5 +1,5 @@
 import { Col, Row, Input, Typography, Radio, Select, Tag, Form } from "antd";
-import { onFilterStatus, onSearchTodo } from "../Redux/actions";
+import { onFilterPriority, onFilterStatus, onSearchTodo } from "../Redux/actions";
 import { useDispatch } from "react-redux";
 
 const { Search } = Input;
@@ -20,6 +20,14 @@ export default function Filters({ form }) {
       dispatch(onFilterStatus({ status: formValues?.filterStatus }));
     }
   };
+
+  const handleSelectPriority = () => {
+    const formValues = form.getFieldsValue();
+
+    if (formValues?.filterPriority) {
+      dispatch(onFilterPriority({ priority: formValues?.filterPriority }));
+    }
+  }
 
   return (
     <Row justify="center">
@@ -65,6 +73,7 @@ export default function Filters({ form }) {
             allowClear
             placeholder="Please select"
             style={{ width: "100%" }}
+            onChange={() => handleSelectPriority()}
           >
             <Select.Option value="High" label="High">
               <Tag color="red">High</Tag>

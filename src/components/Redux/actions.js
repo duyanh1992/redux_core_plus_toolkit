@@ -25,3 +25,10 @@ export const setTodoStatus = (payload) => {
     payload,
   };
 };
+
+export const onFilterPriority = (payload) => {
+  return {
+    type: "filter/priority",
+    payload,
+  };
+};

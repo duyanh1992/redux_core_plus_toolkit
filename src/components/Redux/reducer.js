@@ -1,16 +1,18 @@
+import { combineReducers } from "redux";
+
 import filterReducer from "../Filters/FilterSlice";
 import todoReducer from "../Todo/TodoSlice";
 
-const initialState = {
-  filters: {},
-  todoList: [],
-};
+// const rootReducer = (state = {}, action) => {
+//   return {
+//     todoList: todoReducer(state.todoList, action),
+//     filters: filterReducer(state.filters, action),
+//   };
+// };
 
-const rootReducer = (state = {}, action) => {
-  return {
-    filters: filterReducer(state.filters, action),
-    todoList: todoReducer(state.todoList, action),
-  };
-};
+const rootReducer = combineReducers({
+  todoList: todoReducer,
+  filters: filterReducer,
+});
 
 export default rootReducer;
